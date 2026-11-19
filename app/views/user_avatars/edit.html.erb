@@ -1,0 +1,36 @@
+<%# Eigenes Bild (Mein Konto) bzw. Bild eines Benutzers (Admin) %>
+<% if @own %>
+  <div class="contextual">
+    <%= link_to sprite_icon('user', l(:label_my_account)), my_account_path, class: 'icon icon-user' %>
+  </div>
+  <h2><%= l(:label_avatars_title) %></h2>
+<% else %>
+  <h2><%= link_to l(:label_user_plural), users_path %> &#187; <%= link_to @user.name, edit_user_path(@user) %> &#187; <%= l(:label_avatars_avatar) %></h2>
+<% end %>
+
+<fieldset class="box tabular" id="avatars-form-box">
+  <legend><%= l(:label_avatars_avatar) %></legend>
+
+  <%= form_tag(@own ? my_avatar_path : user_avatar_edit_path(@user), multipart: true, id: 'avatars-form') do %>
+    <p>
+      <label><%= l(:label_avatars_current) %></label>
+      <%= avatar(@user, size: 64) %>
+      <% if @avatar %>
+        <%= link_to sprite_icon('del', l(:button_avatars_remove)),
+                    (@own ? my_avatar_path : user_avatar_edit_path(@user)),
+                    method: :delete, data: { confirm: l(:text_are_you_sure) },
+                    class: 'icon icon-del', style: 'margin-left: 12px;' %>
+      <% else %>
+        <em class="info"><%= l(:text_avatars_none) %></em>
+      <% end %>
+    </p>
+    <p>
+      <label for="avatars_file"><%= l(:label_avatars_new) %></label>
+      <%= file_field_tag 'file', id: 'avatars_file', accept: RedmineAvatars::Avatar::ALLOWED_TYPES.join(',') %>
+      <em class="info"><%= l(:text_avatars_hint, size: RedmineAvatars::Avatar::SIZE) %></em>
+    </p>
+    <p>
+      <%= submit_tag l(:button_avatars_upload) %>
+    </p>
+  <% end %>
+</fieldset>

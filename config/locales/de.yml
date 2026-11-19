@@ -1,0 +1,16 @@
+de:
+  label_avatars_title: Avatar ändern
+  label_avatars_avatar: Avatar
+  label_avatars_current: Aktuell
+  label_avatars_new: Neues Bild
+  button_avatars_change: Avatar ändern
+  button_avatars_upload: Hochladen
+  button_avatars_remove: Bild entfernen
+  text_avatars_none: Kein eigenes Bild – Redmine zeigt die Initialen bzw. Gravatar.
+  text_avatars_hint: "PNG, JPG, WebP oder GIF, höchstens 5 MB. Das Bild wird quadratisch zugeschnitten (Mitte) und auf %{size} × %{size} px verkleinert; Metadaten wie Standortangaben werden entfernt."
+  notice_avatars_saved: Avatar gespeichert.
+  notice_avatars_removed: Avatar entfernt.
+  error_avatars_blank: Bitte eine Bilddatei auswählen.
+  error_avatars_too_large: Die Datei ist größer als 5 MB.
+  error_avatars_type: Dieses Dateiformat wird nicht unterstützt (erlaubt sind PNG, JPG, WebP und GIF).
+  error_avatars_processing: Das Bild konnte nicht verarbeitet werden.
